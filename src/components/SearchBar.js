@@ -1,12 +1,20 @@
 import React from 'react';
-import { StyleSheet, View, Text, TextInput } from 'react-native';
+import { StyleSheet, View, TextInput } from 'react-native';
 import Icon from 'react-native-vector-icons/dist/MaterialIcons';
 
-const SearchBar = () => {
+const SearchBar = ({ term, onTermChange, onTermSubmit }) => {
   return (
     <View style={styles.backgroundStyle}>
       <Icon name="search" style={styles.iconStyle} />
-      <TextInput style={styles.inputStyle} placeholder="Search" />
+      <TextInput
+        autoCapitalize="none"
+        autoCorrect={false}
+        style={styles.inputStyle}
+        placeholder="Search"
+        value={term}
+        onChangeText={onTermChange}
+        onEndEditing={onTermSubmit}
+      />
     </View>
   );
 };
