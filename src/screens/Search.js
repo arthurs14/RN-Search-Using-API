@@ -8,7 +8,7 @@ const Search = () => {
   const [term, setTerm] = useState('');
   const [searchAPI, results, errorMessage] = useResults();
 
-  console.log('results:', results);
+  // console.log('results:', results);
 
   const filterResultByPrice = price => {
     // price === '$' || '$$' || '$$$'
