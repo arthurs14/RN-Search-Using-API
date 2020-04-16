@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View, Text, ScrollView } from 'react-native';
 import SearchBar from '../components/SearchBar';
 import useResults from '../hooks/useResults';
 import ResultsList from '../components/ResultsList';
@@ -16,7 +16,7 @@ const Search = () => {
   };
 
   return (
-    <View>
+    <View style={styles.container}>
       <SearchBar
         term={term}
         onTermChange={setTerm}
@@ -24,13 +24,22 @@ const Search = () => {
       />
       {errorMessage ? <Text>{errorMessage}</Text> : null}
       <Text>We have found {results.length} results</Text>
-      <ResultsList results={filterResultByPrice('$')} title="Cost Effective" />
-      <ResultsList results={filterResultByPrice('$$')} title="Bit Pricier" />
-      <ResultsList results={filterResultByPrice('$$$')} title="Big Spender" />
+      <ScrollView>
+        <ResultsList
+          results={filterResultByPrice('$')}
+          title="Cost Effective"
+        />
+        <ResultsList results={filterResultByPrice('$$')} title="Bit Pricier" />
+        <ResultsList results={filterResultByPrice('$$$')} title="Big Spender" />
+      </ScrollView>
     </View>
   );
 };
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+});
 
 export default Search;
