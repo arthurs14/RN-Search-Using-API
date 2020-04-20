@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import yelp from '../api/yelp';
 
+// Makes an API call to get the list of business from the key word search
+
 export default () => {
   const [results, setResults] = useState([]);
   const [errorMessage, setErrorMessage] = useState('');

@@ -13,7 +13,11 @@ const Stack = () => {
         component={SearchScreen}
         options={{ title: 'Business Search' }}
       />
-      <MainStack.Screen name="Result" component={ResultsShowScreen} />
+      <MainStack.Screen
+        name="Result"
+        component={ResultsShowScreen}
+        options={{ title: 'Business Search' }}
+      />
     </MainStack.Navigator>
   );
 };
