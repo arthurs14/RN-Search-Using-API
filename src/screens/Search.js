@@ -4,7 +4,7 @@ import SearchBar from '../components/SearchBar';
 import useResults from '../hooks/useResults';
 import ResultsList from '../components/ResultsList';
 
-const Search = () => {
+const Search = ({ navigation }) => {
   const [term, setTerm] = useState('');
   const [searchAPI, results, errorMessage] = useResults();
 
@@ -23,14 +23,22 @@ const Search = () => {
         onTermSubmit={() => searchAPI(term)}
       />
       {errorMessage ? <Text>{errorMessage}</Text> : null}
-      <Text>We have found {results.length} results</Text>
       <ScrollView>
         <ResultsList
           results={filterResultByPrice('$')}
           title="Cost Effective"
+          navigation={navigation}
         />
-        <ResultsList results={filterResultByPrice('$$')} title="Bit Pricier" />
-        <ResultsList results={filterResultByPrice('$$$')} title="Big Spender" />
+        <ResultsList
+          results={filterResultByPrice('$$')}
+          title="Bit Pricier"
+          navigation={navigation}
+        />
+        <ResultsList
+          results={filterResultByPrice('$$$')}
+          title="Big Spender"
+          navigation={navigation}
+        />
       </ScrollView>
     </View>
   );
